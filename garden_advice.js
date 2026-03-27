@@ -1,33 +1,27 @@
-// Hardcoded values for the season and plant type
-let season = "summer"; // TODO: Replace with prompt() to allow user interaction.
-let plantType = "flower"; // TODO: Replace with prompt() to allow user interaction.
+// Ask the user for the season and plant type
+let season = prompt("Enter the season (summer/winter):").toLowerCase();
+let plantType = prompt("Enter the plant type (flower/vegetable):").toLowerCase();
 
-// Variable to hold gardening advice
-let advice = "";
+// Function to get advice based on type and value
+function getAdvice(type, value) {
+    let advice = "";
 
-// Determine advice based on the season
-if (season === "summer") {
-    advice += "Water your plants regularly and provide some shade.\n";
-} else if (season === "winter") {
-    advice += "Protect your plants from frost with covers.\n";
-} else {
-    advice += "No advice for this season.\n";
+    if (type === "season") {
+        if (value === "summer") advice = "Water your plants regularly and provide some shade.\n";
+        else if (value === "winter") advice = "Protect your plants from frost with covers.\n";
+        else advice = "No advice for this season.\n";
+    } 
+    else if (type === "plantType") {
+        if (value === "flower") advice = "Use fertiliser to encourage blooms.";
+        else if (value === "vegetable") advice = "Keep an eye out for pests!";
+        else advice = "No advice for this type of plant.";
+    }
+
+    return advice;
 }
 
-// Determine advice based on the plant type
-if (plantType === "flower") {
-    advice += "Use fertiliser to encourage blooms.";
-} else if (plantType === "vegetable") {
-    advice += "Keep an eye out for pests!";
-} else {
-    advice += "No advice for this type of plant.";
-}
+// Get advice for the season and plant type
+let advice = getAdvice("season", season) + getAdvice("plantType", plantType);
 
-// Log the generated advice to the console
+// Show the advice
 console.log(advice);
-
-// TODO: Examples of possible features to add:
-// - Add detailed comments explaining each block of code.
-// - Refactor the code into functions for better readability and modularity.
-// - Store advice in an object for multiple plants and seasons.
-// - Suggest plants that thrive in the given season.
